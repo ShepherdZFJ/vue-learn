@@ -2,6 +2,7 @@
   <div class="demo">
     <h2>学生姓名：{{name}}</h2>
     <h2>学生年龄：{{age}}</h2>
+    <h2>学生性别：{{sex}}</h2>
     <button @click="showName">点我显示姓名</button>
   </div>
 </template>
@@ -19,6 +20,12 @@ export default {
        showName(){
         alert(this.name)
        } 
+    },
+    props:{
+      sex:{
+        type:String,
+        required:true
+      }
     }
 }
 </script>
