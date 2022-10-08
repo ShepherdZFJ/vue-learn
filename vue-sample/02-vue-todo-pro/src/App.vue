@@ -2,7 +2,9 @@
 	<div id="root">
 		<div class="todo-container">
 			<div class="todo-wrap">
-				<MyHeader :addTodo="addTodo"/>
+				<!-- <MyHeader :addTodo="addTodo"/> -->
+				<!-- 通过父组件给子组件绑定一个自定义事件实现：子给父传递数据（第一种写法，使用@或v-on） -->
+				<MyHeader @addTodo="addTodo"></MyHeader>
 				<MyList :todos="todos" :checkTodo="checkTodo" :deleteTodo="deleteTodo"/>
 				<MyFooter :todos="todos" :checkAllTodo="checkAllTodo" :clearAllTodo="clearAllTodo"/>
 			</div>
