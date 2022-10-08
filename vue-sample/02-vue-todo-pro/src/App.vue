@@ -6,7 +6,8 @@
 				<!-- 通过父组件给子组件绑定一个自定义事件实现：子给父传递数据（第一种写法，使用@或v-on） -->
 				<MyHeader @addTodo="addTodo"></MyHeader>
 				<MyList :todos="todos" :checkTodo="checkTodo" :deleteTodo="deleteTodo"/>
-				<MyFooter :todos="todos" :checkAllTodo="checkAllTodo" :clearAllTodo="clearAllTodo"/>
+				<!-- <MyFooter :todos="todos" :checkAllTodo="checkAllTodo" :clearAllTodo="clearAllTodo"/> -->
+				<MyFooter :todos="todos" @checkAllTodo="checkAllTodo" @clearAllTodo="clearAllTodo"/>
 			</div>
 		</div>
 	</div>
@@ -57,7 +58,16 @@
 					return !todo.done
 				})
 			}
-		}
+		},
+		// 使用全局事件总线完成勾选和删除todo任务项
+		mounted() {
+			this.$bus.$on('checkTodo',this.checkTodo)
+			this.$bus.$on('deleteTodo',this.deleteTodo)
+		},
+		beforeDestroy() {
+			this.$bus.$off('checkTodo')
+			this.$bus.$off('deleteTodo')
+		},
 	}
 </script>
 
