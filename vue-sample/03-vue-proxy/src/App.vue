@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <SmsInfo></SmsInfo>
+    <ShortUrl></ShortUrl>
   </div>
 </template>
 
 <script>
 import SmsInfo from './components/SmsInfo.vue';
+import ShortUrl from './components/ShortUrl.vue';
 
 export default {
   name: 'App',
   components: {
-    SmsInfo
+    SmsInfo,
+    ShortUrl
 }
 }
 </script>
