@@ -1,17 +1,20 @@
 <template>
   <div id="app">
     <Count></Count>
+    <Student></Student>
   </div>
 </template>
 
 <script>
 
 import Count from './components/Count.vue'
+import Student from './components/Student.vue';
 export default {
   name: 'App',
   components: {
-    Count
-  }
+    Count,
+    Student
+}
 }
 </script>
 

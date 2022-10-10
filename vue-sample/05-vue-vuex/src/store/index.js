@@ -37,13 +37,18 @@ const mutations = {
 	DECREASE(state,value){
 		console.log('mutations中的DECREASE被调用了')
 		state.sum -= value
-	}
+	},
+    ADD_STUDENT(state, value){
+        console.log("mutations中的ADD_STUDENT被调用了")
+        state.studentList.unshift(value)
+    }
 }
 //准备state——用于存储数据
 const state = {
 	sum:0, //当前的和
     school:"浙工大",
-    subject:'计算机'
+    subject:'计算机',
+    studentList:[{id:'001', name:'张三'}]
 }
 
 //准备getters——用于将state中的数据进行加工

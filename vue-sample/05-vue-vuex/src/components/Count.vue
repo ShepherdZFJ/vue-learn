@@ -4,6 +4,7 @@
     <h1>当前求和为奇数再加：{{$store.state.sum}}</h1>
     <h2>当前求和放大10倍为：{{bigSum}}</h2>
     <h3>学校：{{school}}, 专业：{{subject}}</h3>
+    <h3>学生总人数：{{studentList.length}}</h3>
     <select v-model.number="n">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -28,7 +29,7 @@ export default {
         }
     },
     computed: {
-        ...mapState(['sum', 'school', 'subject']),
+        ...mapState(['sum', 'school', 'subject', 'studentList']),
         ...mapGetters(['bigSum'])
     },
     methods: {
