@@ -10,15 +10,15 @@
         <option value="3">3</option>
     </select>
 
-    <button @click="increment">+</button>
-    <button @click="decrement">-</button>
-    <button @click="incrementOdd">当前求和为奇数再加</button>
-    <button @click="incrementWait">等一等再加</button>
+    <button @click="increment(n)">+</button>
+    <button @click="decrement(n)">-</button>
+    <button @click="incrementOdd(n)">当前求和为奇数再加</button>
+    <button @click="incrementWait(n)">等一等再加</button>
   </div>
 </template>
 
 <script>
-import {mapState,mapGetters} from 'vuex'
+import {mapState,mapGetters,mapMutations, mapActions} from 'vuex'
 export default {
     name:"Count",
     data() {
@@ -32,27 +32,33 @@ export default {
         ...mapGetters(['bigSum'])
     },
     methods: {
-        increment(){
-            // this.sum += this.n
-            // 直接调mutations
-            this.$store.commit('INCREASE', this.n)
-        },
-        decrement(){
-            // this.sum -= this.n
-            this.$store.commit('DECREASE', this.n)
-        },
-        incrementOdd(){
-            // if(this.sum%2){
-            //     this.sum += this.n
-            // }
-            this.$store.dispatch('increaseOdd', this.n)
-        },
-        incrementWait(){
-            // setTimeout(()=>{
-            //     this.sum += this.n
-            // }, 1000)
-            this.$store.dispatch('increaseWait', this.n)
-        }
+        // increment(){
+        //     // this.sum += this.n
+        //     // 直接调mutations
+        //     this.$store.commit('INCREASE', this.n)
+        // },
+        // decrement(){
+        //     // this.sum -= this.n
+        //     this.$store.commit('DECREASE', this.n)
+        // },
+
+        ...mapMutations({increment:'INCREASE',decrement:'DECREASE'}),
+
+        // incrementOdd(){
+        //     // if(this.sum%2){
+        //     //     this.sum += this.n
+        //     // }
+        //     this.$store.dispatch('increaseOdd', this.n)
+        // },
+        // incrementWait(){
+        //     // setTimeout(()=>{
+        //     //     this.sum += this.n
+        //     // }, 1000)
+        //     this.$store.dispatch('increaseWait', this.n)
+        // }
+
+        //借助mapActions生成对应的方法，方法中会调用dispatch去联系actions(对象写法)
+			...mapActions({incrementOdd:'increaseOdd',incrementWait:'increaseWait'})
     },
     mounted() {
         console.log("Count", this)
