@@ -2,7 +2,8 @@
   <div>
     <!-- <h1>当前求和为：{{sum}}</h1> -->
     <h1>当前求和为奇数再加：{{$store.state.sum}}</h1>
-    <h2>当前求和放大10倍为：{{$store.getters.bigSum}}</h2>
+    <h2>当前求和放大10倍为：{{bigSum}}</h2>
+    <h3>学校：{{school}}, 专业：{{subject}}</h3>
     <select v-model.number="n">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -17,6 +18,7 @@
 </template>
 
 <script>
+import {mapState,mapGetters} from 'vuex'
 export default {
     name:"Count",
     data() {
@@ -24,6 +26,10 @@ export default {
             n:1,
             // sum:0
         }
+    },
+    computed: {
+        ...mapState(['sum', 'school', 'subject']),
+        ...mapGetters(['bigSum'])
     },
     methods: {
         increment(){
