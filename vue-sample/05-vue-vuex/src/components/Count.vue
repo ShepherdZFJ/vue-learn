@@ -2,6 +2,7 @@
   <div>
     <!-- <h1>当前求和为：{{sum}}</h1> -->
     <h1>当前求和为奇数再加：{{$store.state.sum}}</h1>
+    <h2>当前求和放大10倍为：{{$store.getters.bigSum}}</h2>
     <select v-model.number="n">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -58,6 +59,9 @@ export default {
     button{
         margin-left: 5px;
         font-size: 16;
+    }
+    h2{
+        color: blue;
     }
 
 </style>
