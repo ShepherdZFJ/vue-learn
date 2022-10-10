@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>当前求和为：{{sum}}</h1>
+    <!-- <h1>当前求和为：{{sum}}</h1> -->
+    <h1>当前求和为奇数再加：{{$store.state.sum}}</h1>
     <select v-model.number="n">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -20,26 +21,34 @@ export default {
     data() {
         return {
             n:1,
-            sum:0
+            // sum:0
         }
     },
     methods: {
         increment(){
-            this.sum += this.n
+            // this.sum += this.n
+            // 直接调mutations
+            this.$store.commit('INCREASE', this.n)
         },
         decrement(){
-            this.sum -= this.n
+            // this.sum -= this.n
+            this.$store.commit('DECREASE', this.n)
         },
         incrementOdd(){
-            if(this.sum%2){
-                this.sum += this.n
-            }
+            // if(this.sum%2){
+            //     this.sum += this.n
+            // }
+            this.$store.dispatch('increaseOdd', this.n)
         },
         incrementWait(){
-            setTimeout(()=>{
-                this.sum += this.n
-            }, 1000)
+            // setTimeout(()=>{
+            //     this.sum += this.n
+            // }, 1000)
+            this.$store.dispatch('increaseWait', this.n)
         }
+    },
+    mounted() {
+        console.log("Count", this)
     }
 
 }
