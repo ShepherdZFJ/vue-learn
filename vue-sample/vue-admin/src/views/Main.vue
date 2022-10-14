@@ -6,7 +6,11 @@
     </el-aside>
     <el-container>
         <el-header>Header</el-header>
-        <el-main>Main</el-main>
+        <el-main>
+          <!-- 路由出口 -->
+          <!-- 路由匹配到的组件将渲染在这里 -->
+          <router-view></router-view>
+        </el-main>
     </el-container>
     </el-container>
   </div>
@@ -24,7 +28,7 @@ export default {
 </script>
 
 <style>
-  .el-header, .el-footer {
+  /* .el-header, .el-footer {
     background-color: #B3C0D1;
     color: #333;
     text-align: center;
@@ -57,6 +61,6 @@ export default {
   
   .el-container:nth-child(7) .el-aside {
     line-height: 320px;
-  }
+  } */
 
 </style>

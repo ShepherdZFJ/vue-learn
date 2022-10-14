@@ -12,9 +12,10 @@
         :collapse="isCollapse"
         background-color="#545c64"
         text-color="#fff"
-        active-text-color="#ffd04b">
+        active-text-color="#ffd04b"
+        >
         
-          <el-menu-item v-for="item in noChildren" :key="item.name" :index="item.name">
+          <el-menu-item @click="checkMenu(item)" v-for="item in noChildren" :key="item.name" :index="item.name">
               <i :class="`el-icon-${item.icon}`"></i>
               <span slot="title">{{item.label}}</span>
           </el-menu-item>
@@ -24,7 +25,7 @@
                   <span slot="title">{{item.label}}</span>
               </template>
               <el-menu-item-group v-for="subItem in item.children" :key="subItem.path">
-                  <el-menu-item :index="subItem.path">{{subItem.label}}</el-menu-item>
+                  <el-menu-item @click="checkMenu(subItem)" :index="subItem.path">{{subItem.label}}</el-menu-item>
               </el-menu-item-group>
           </el-submenu>
       </el-menu>
@@ -88,6 +89,13 @@
         },
         handleClose(key, keyPath) {
           console.log(key, keyPath);
+        },
+        checkMenu(item) {
+          console.log(this.$route.path,item.path)
+          if (this.$route.path !== item.path) {
+            this.$router.push(item.path)
+          }
+          // this.$router.push(item.path)
         }
       },
       
