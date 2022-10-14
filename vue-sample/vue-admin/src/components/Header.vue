@@ -1,7 +1,7 @@
 <template>
   <div class="header-container">
     <div class="l-content">
-        <el-button icon='el-icon-menu' size='mini' ></el-button>
+        <el-button icon='el-icon-menu' size='mini' @click="collapseMenu()" ></el-button>
     </div>
     <div class="r-content">
         <el-dropdown>
@@ -21,7 +21,12 @@
 
 <script>
 export default {
-    name:"Header"
+    name:"Header",
+    methods:{
+        collapseMenu(){
+            this.$store.commit('collapseMenu')
+        }
+    }
 
 }
 </script>
