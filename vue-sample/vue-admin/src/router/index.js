@@ -11,6 +11,7 @@ export default new VueRouter({
         {
             path:'/',
             component:Main,
+            redirect:'/home',
             children:[
                 // 子路由
                 { path: 'home', name: 'home', component: Home }, // 首页
