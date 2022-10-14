@@ -5,7 +5,9 @@
       <NavMenu></NavMenu>
     </el-aside>
     <el-container>
-        <el-header>Header</el-header>
+        <el-header>
+          <Header></Header>
+        </el-header>
         <el-main>
           <!-- 路由出口 -->
           <!-- 路由匹配到的组件将渲染在这里 -->
@@ -18,10 +20,12 @@
 
 <script>
 import NavMenu from '../components/NavMenu.vue'
+import Header from '../components/Header.vue'
 export default {
     name:"Main",
     components:{
-      NavMenu
+      NavMenu,
+      Header
     }
 
 }
