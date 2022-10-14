@@ -1,7 +1,9 @@
 <template>
   <div>
     <el-container>
-    <el-aside width="200px">Aside</el-aside>
+    <el-aside width="auto">
+      <NavMenu></NavMenu>
+    </el-aside>
     <el-container>
         <el-header>Header</el-header>
         <el-main>Main</el-main>
@@ -11,8 +13,12 @@
 </template>
 
 <script>
+import NavMenu from '../components/NavMenu.vue'
 export default {
-    name:"Main"
+    name:"Main",
+    components:{
+      NavMenu
+    }
 
 }
 </script>
@@ -28,8 +34,9 @@ export default {
   .el-aside {
     background-color: #D3DCE6;
     color: #333;
-    text-align: center;
+    text-align: left;
     line-height: 200px;
+    height: 100vh;
   }
   
   .el-main {
