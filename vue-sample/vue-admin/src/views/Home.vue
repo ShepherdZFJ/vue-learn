@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import { getData } from '../api'
 export default {
     name:"Home",
     data(){
@@ -125,6 +126,14 @@ export default {
                 },
             ]
         }
+    },
+    mounted(){
+        getData().then(({ data }) => {
+            const { tableData } = data.data
+            console.log(data.data)
+            this.tableData = tableData
+        })
+
     }
 
 }
