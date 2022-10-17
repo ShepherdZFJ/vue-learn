@@ -116,9 +116,22 @@
   }
   </script>
   
-  <style>
-   .el-menu-vertical-demo:not(.el-menu--collapse) {
-      width: 200px;
-      min-height: 400px;
+  <style lang="less" scoped>
+  .el-menu {
+    border-right: none;
+    height: 100vh;
+  }
+  .el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: 400px;
+}
+.el-menu {
+    h3 {
+        color: #fff;
+        text-align: center;
+        line-height: 48px;
+        font-size: 16px;
+        font-weight: 400;
     }
+  }
   </style>
