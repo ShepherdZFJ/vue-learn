@@ -14,6 +14,13 @@
                     <p>上次登录地点：<span>杭州</span></p>
                 </div>
             </el-card>
+            <el-card style="margin-top: 20px;height: 460px;">
+                <el-table
+                :data="tableData"
+                style="width: 100%">
+                    <el-table-column v-for="(val, key) in tableLabel" :prop="key" :label="val" :key="key"  />
+                </el-table>
+            </el-card>
         </el-col>
         <el-col :span="16"><div class="grid-content bg-purple-light"></div></el-col>
     </el-row>
@@ -22,7 +29,55 @@
 
 <script>
 export default {
-    name:"Home"
+    name:"Home",
+    data(){
+        return {
+            tableLabel: {
+                name: '课程',
+                todayBuy: '今日购买',
+                monthBuy: '本月购买',
+                totalBuy: '总购买'
+            },
+            tableData:[
+                    {
+                    name: 'oppo',
+                    todayBuy: 100,
+                    monthBuy: 300,
+                    totalBuy: 800
+                },
+                {
+                    name: 'vivo',
+                    todayBuy: 100,
+                    monthBuy: 300,
+                    totalBuy: 800
+                },
+                {
+                    name: '苹果',
+                    todayBuy: 100,
+                    monthBuy: 300,
+                    totalBuy: 800
+                },
+                {
+                    name: '小米',
+                    todayBuy: 100,
+                    monthBuy: 300,
+                    totalBuy: 800
+                },
+                {
+                    name: '三星',
+                    todayBuy: 100,
+                    monthBuy: 300,
+                    totalBuy: 800
+                },
+                {
+                    name: '魅族',
+                    todayBuy: 100,
+                    monthBuy: 300,
+                    totalBuy: 800
+                }
+            ]
+        }
+    }
 
 }
 </script>
