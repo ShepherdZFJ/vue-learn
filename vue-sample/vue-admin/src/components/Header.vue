@@ -2,6 +2,10 @@
   <div class="header-container">
     <div class="l-content">
         <el-button icon='el-icon-menu' size='mini' @click="collapseMenu()" ></el-button>
+        <!-- 面包屑 -->
+        <el-breadcrumb separator="/">
+                <el-breadcrumb-item v-for="item in tabsList" :key="item.path" :to="{ path: item.path }">{{ item.label }}</el-breadcrumb-item>
+            </el-breadcrumb>
     </div>
     <div class="r-content">
         <el-dropdown>
@@ -19,12 +23,27 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
     name:"Header",
     methods:{
         collapseMenu(){
             this.$store.commit('collapseMenu')
         }
+    },
+    computed:{
+        // ...mapState({
+        //     tags: state => state.tab.tabsList
+        // })
+        ...mapState('tab', ['tabsList'])
+        // tabsList() {
+        //     return this.$store.state.tab.tabsList
+        // }
+
+    },
+    mounted() {
+        console.log("Header", this)
+
     }
 
 }

@@ -90,11 +90,10 @@
           console.log(key, keyPath);
         },
         checkMenu(item) {
-          console.log(this.$route.path,item.path)
           if (this.$route.path !== item.path) {
             this.$router.push(item.path)
           }
-          // this.$router.push(item.path)
+          this.$store.commit('tab/selectMenu', item)
         }
       },
       
