@@ -1,7 +1,7 @@
 <template>
   <div class="header-container">
     <div class="l-content">
-        <el-button icon='el-icon-menu' size='mini' @click="collapseMenu()" ></el-button>
+        <el-button icon='el-icon-menu' style="margin-right: 20px" size='mini' @click="collapseMenu()" ></el-button>
         <!-- 面包屑 -->
         <el-breadcrumb separator="/">
                 <el-breadcrumb-item v-for="item in tabsList" :key="item.path" :to="{ path: item.path }">{{ item.label }}</el-breadcrumb-item>
