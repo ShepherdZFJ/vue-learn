@@ -28,6 +28,12 @@ const mutations={
         }
         console.log( 'tabsList', state.tabsList)
     },
+    // 删除指定的tag数据
+    closeTag(state, item) {
+        // console.log(item, 'item')
+        const index = state.tabsList.findIndex(val => val.name === item.name)
+        state.tabsList.splice(index, 1)
+    },
 
 
 }
