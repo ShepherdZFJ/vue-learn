@@ -8,6 +8,7 @@
         <el-header>
           <Header></Header>
         </el-header>
+        <Tags></Tags>
         <el-main>
           <!-- 路由出口 -->
           <!-- 路由匹配到的组件将渲染在这里 -->
@@ -21,11 +22,13 @@
 <script>
 import NavMenu from '../components/NavMenu.vue'
 import Header from '../components/Header.vue'
+import Tags from '../components/Tags.vue'
 export default {
     name:"Main",
     components:{
       NavMenu,
-      Header
+      Header,
+      Tags
     }
 
 }
