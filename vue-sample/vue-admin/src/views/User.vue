@@ -3,8 +3,19 @@
 </template>
 
 <script>
+import { getUser } from '../api'
 export default {
-    name:"User"
+    name:"User",
+    data(){
+      return {
+
+      }
+    },
+    mounted(){
+      getUser().then(({ data }) => {
+            console.log("userList:",data)
+        })
+    }
 
 }
 </script>
