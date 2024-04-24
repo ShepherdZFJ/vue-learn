@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>条件渲染</title>
+		<script type="text/javascript" src="../js/vue.js"></script>
+	</head>
+	<body>
+		<div id="root">
+			<h2 v-if="isReal">isReal为true, {{msg}}</h2>
+			<h2 v-if="!isReal">isReal为false<>
+			<h2 v-if="n===1">n等于1, {{msg}}</h2>
+			<h2 v-else-if="n===2">n等于2, {{msg}}</h2>
+			<h2 v-else="n===3">n等于, {{msg}}</h2>
+			<h2 v-show="isShow">isShow为true，{{msg}}</h2>
+
+			<template v-if="!isReal">
+				<h1>Title</h1>
+				<p>Paragraph 1</p>
+				<p>Paragraph 2</p>
+			</template>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		Vue.config.productionTip = false
+
+		const vm = new Vue({
+			el:'#root',
+			data:{
+				isReal:true,
+				isShow:false,
+				n:2,
+				msg:"我显示出来了"
+			}
+		})
+	</script>
+</html>
