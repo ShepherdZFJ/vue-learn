@@ -16,25 +16,20 @@ export default {
 
 <!-- 下面的写法是setup语法糖 -->
 <script setup lang="ts">
- import {ref} from 'vue'
-  // name和age是一个RefImpl的实例对象，简称ref对象，它们的value属性是响应式的。
-  let name = ref('张三')
-  let age = ref(18)
-  // tel就是一个普通的字符串，不是响应式的
+  console.log(this) //undefined
+  
+  // 数据（注意：此时的name、age、tel都不是响应式数据）
+  let name = '张三'
+  let age = 18
   let tel = '13888888888'
 
-  function changeName(){
-    // JS中操作ref对象时候需要.value
-    name.value = '李四'
-    console.log(name.value)
-
-    // 注意：name不是响应式的，name.value是响应式的，所以如下代码并不会引起页面的更新。
-    // name = ref('zhang-san')
+  // 方法
+  function changName(){
+    name = '李四'//注意：此时这么修改name页面是不变化的
   }
-  function changeAge(){
-    // JS中操作ref对象时候需要.value
-    age.value += 1 
-    console.log(age.value)
+  function changAge(){
+    console.log(age)
+    age += 1 //注意：此时这么修改age页面是不变化的
   }
   function showTel(){
     alert(tel)
