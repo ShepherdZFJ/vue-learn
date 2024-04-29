@@ -1,14 +1,9 @@
 <template>
   <div class="person">
-    <h2>汽车信息：一台{{ car.brand }}汽车，价值{{ car.price }}万</h2>
-    <h2>游戏列表：</h2>
-    <ul>
-      <li v-for="g in games" :key="g.id">{{ g.name }}</li>
-    </ul>
-    <h2>测试：{{obj.a.b.c.d}}</h2>
-    <button @click="changeCarPrice">修改汽车价格</button>
-    <button @click="changeFirstGame">修改第一游戏</button>
-    <button @click="test">测试</button>
+    姓：<input type="text" v-model="firstName"> <br>
+    名：<input type="text" v-model="lastName"> <br>
+    全名：<span>{{fullName}}</span> <br>
+    <button @click="changeFullName">全名改为：li-si</button>
   </div>
 </template>
 
@@ -18,35 +13,35 @@ export default {
 }
 </script>
 
-<script lang="ts" setup >
-import { reactive } from 'vue'
+<script lang="ts" setup name="Person">
+  import {ref,computed} from 'vue'
 
-// 数据
-let car = reactive({ brand: '奔驰', price: 100 })
-let games = reactive([
-  { id: 'ahsgdyfa01', name: '英雄联盟' },
-  { id: 'ahsgdyfa02', name: '王者荣耀' },
-  { id: 'ahsgdyfa03', name: '原神' }
-])
-let obj = reactive({
-  a:{
-    b:{
-      c:{
-        d:666
-      }
+  let firstName = ref('zhang')
+  let lastName = ref('san')
+
+  // fullName是一个计算属性，且是只读的
+  /* let fullName = computed(()=>{
+    console.log(1)
+    return firstName.value.slice(0,1).toUpperCase() + firstName.value.slice(1) + '-' + lastName.value
+  }) */
+
+  // fullName是一个计算属性，可读可写
+  let fullName = computed({
+    // 当fullName被读取时，get调用
+    get(){
+      return firstName.value.slice(0,1).toUpperCase() + firstName.value.slice(1) + '-' + lastName.value
+    },
+    // 当fullName被修改时，set调用，且会收到修改的值
+    set(val){
+      const [str1,str2] = val.split('-')
+      firstName.value = str1
+      lastName.value = str2
     }
-  }
-})
+  })
 
-function changeCarPrice() {
-  car.price += 10
-}
-function changeFirstGame() {
-  games[0].name = '流星蝴蝶剑'
-}
-function test(){
-  obj.a.b.c.d = 999
-}
+  function changeFullName(){
+    fullName.value = 'li-si'
+  }
 </script>
 
 
